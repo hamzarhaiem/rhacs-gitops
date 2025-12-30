@@ -1,0 +1,16 @@
+apiVersion: config.stackrox.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: k8s-actions-exec-into-pod
+  namespace: stackrox
+spec:
+  policyName: Kubernetes Actions: Exec into Pod (GitOps)
+  description: "Runtime: alert when a user execs into a pod (audit-driven)."
+  severity: HIGH_SEVERITY
+  categories:
+    - Kubernetes
+    - Anomalous Activity
+  lifecycleStages:
+    - RUNTIME
+  disabled: false
+  policySections: []

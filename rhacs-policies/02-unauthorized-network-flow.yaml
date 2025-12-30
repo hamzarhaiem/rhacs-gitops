@@ -1,0 +1,16 @@
+apiVersion: config.stackrox.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: unauthorized-network-flow
+  namespace: stackrox
+spec:
+  policyName: Unauthorized Network Flow (GitOps)
+  description: "Runtime: alert on network flows outside expected/baselined communications."
+  severity: HIGH_SEVERITY
+  categories:
+    - Network Tools
+    - Anomalous Activity
+  lifecycleStages:
+    - RUNTIME
+  disabled: false
+  policySections: []

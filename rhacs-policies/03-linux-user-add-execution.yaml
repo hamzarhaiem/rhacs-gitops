@@ -1,0 +1,16 @@
+apiVersion: config.stackrox.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: linux-user-add-execution
+  namespace: stackrox
+spec:
+  policyName: Linux User Add Execution (GitOps)
+  description: "Runtime: alert when user-management binaries run (useradd/adduser/etc.)."
+  severity: HIGH_SEVERITY
+  categories:
+    - Privilege Escalation
+    - Anomalous Activity
+  lifecycleStages:
+    - RUNTIME
+  disabled: false
+  policySections: []

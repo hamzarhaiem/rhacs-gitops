@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rhacs-policies
+  namespace: openshift-gitops
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: stackrox
+  project: default
+  source:
+    repoURL: https://github.com/hamzarhaiem/rhacs-gitops.git
+    targetRevision: main
+    path: rhacs-policies
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

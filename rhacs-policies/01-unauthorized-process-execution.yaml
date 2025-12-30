@@ -1,0 +1,15 @@
+apiVersion: config.stackrox.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: unauthorized-process-execution
+  namespace: stackrox
+spec:
+  policyName: Unauthorized Process Execution (GitOps)
+  description: "Runtime: alert when an unexpected process executes (baseline-driven)."
+  severity: HIGH_SEVERITY
+  categories:
+    - Anomalous Activity
+  lifecycleStages:
+    - RUNTIME
+  disabled: false
+  policySections: []

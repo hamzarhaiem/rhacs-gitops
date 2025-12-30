@@ -1,0 +1,16 @@
+apiVersion: config.stackrox.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: redhat-package-manager-execution
+  namespace: stackrox
+spec:
+  policyName: Red Hat Package Manager Execution (GitOps)
+  description: "Runtime: alert when yum/dnf/rpm executes in containers."
+  severity: MEDIUM_SEVERITY
+  categories:
+    - Package Management
+    - Anomalous Activity
+  lifecycleStages:
+    - RUNTIME
+  disabled: false
+  policySections: []
