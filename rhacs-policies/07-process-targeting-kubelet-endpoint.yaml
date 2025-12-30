@@ -4,8 +4,8 @@ metadata:
   name: process-targeting-kubelet-endpoint
   namespace: stackrox
 spec:
-  policyName: "[GitOps] Process Targeting Cluster Kubelet Endpoint"
-  description: "Runtime: detect suspicious network tooling that may be used to query kubelet endpoints from a container."
+  policyName: "[GitOps] Process Potentially Targeting Kubelet"
+  description: "Runtime: detect execution of tools commonly used to query kubelet endpoints."
   severity: HIGH_SEVERITY
   categories:
   - Network Activity
@@ -13,7 +13,7 @@ spec:
   - RUNTIME
   disabled: false
   policySections:
-  - sectionName: "kubelet-suspicious-tooling"
+  - sectionName: "kubelet-tooling"
     policyGroups:
     - fieldName: "Process Name"
       values:

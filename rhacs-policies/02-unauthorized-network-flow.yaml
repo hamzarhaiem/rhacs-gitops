@@ -4,8 +4,8 @@ metadata:
   name: unauthorized-network-flow
   namespace: stackrox
 spec:
-  policyName: "[GitOps] Unauthorized Network Flow"
-  description: "Runtime: alert on unexpected outbound connections to external networks."
+  policyName: "[GitOps] Unauthorized Network Tool Execution"
+  description: "Runtime: detect execution of common network tools inside containers."
   severity: HIGH_SEVERITY
   categories:
   - Network Activity
@@ -13,8 +13,11 @@ spec:
   - RUNTIME
   disabled: false
   policySections:
-  - sectionName: "external-network-egress"
+  - sectionName: "network-tools"
     policyGroups:
-    - fieldName: "External Network"
+    - fieldName: "Process Name"
       values:
-      - value: "true"
+      - value: "curl"
+      - value: "wget"
+      - value: "nc"
+      - value: "ncat"
