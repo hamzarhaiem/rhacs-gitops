@@ -4,7 +4,7 @@ metadata:
   name: k8s-actions-exec-into-pod
   namespace: stackrox
 spec:
-  policyName: Kubernetes Actions: Exec into Pod (GitOps)
+  policyName: "Kubernetes Actions: Exec into Pod (GitOps)"
   description: "Runtime: alert when a user execs into a pod (audit-driven)."
   severity: HIGH_SEVERITY
   categories:
