@@ -5,19 +5,16 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "[GitOps] Unauthorized Network Tool Execution"
+  description: "Runtime: alert when common network tools execute."
   severity: HIGH_SEVERITY
-  disabled: false
-
-  lifecycleStages:
-    - RUNTIME
+  categories: ["Network Activity"]
+  lifecycleStages: ["RUNTIME"]
   eventSource: DEPLOYMENT_EVENT
-
-  categories:
-    - Network Activity
-
-  process:
-    - name: "curl"
-    - name: "wget"
-    - name: "nc"
-    - name: "ncat"
-    - name: "netcat"
+  policySections:
+    - sectionName: "Network tooling"
+      policyGroups:
+        - fieldName: "Process Name"
+          values:
+            - value: "curl"
+            - value: "wget"
+            - value: "nc"

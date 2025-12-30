@@ -5,18 +5,15 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "[GitOps] Unauthorized Process Execution"
+  description: "Runtime: alert when unexpected processes execute."
   severity: HIGH_SEVERITY
-  disabled: false
-
-  lifecycleStages:
-    - RUNTIME
+  categories: ["Anomalous Activity"]
+  lifecycleStages: ["RUNTIME"]
   eventSource: DEPLOYMENT_EVENT
-
-  categories:
-    - Process Activity
-
-  process:
-    - name: "sh"
-    - name: "bash"
-    - name: "zsh"
-    - name: "dash"
+  policySections:
+    - sectionName: "Unexpected process"
+      policyGroups:
+        - fieldName: "Process Name"
+          values:
+            - value: "sh"
+            - value: "bash"
