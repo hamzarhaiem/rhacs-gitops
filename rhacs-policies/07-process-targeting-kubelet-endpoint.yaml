@@ -4,8 +4,8 @@ metadata:
   name: process-targeting-kubelet-endpoint
   namespace: stackrox
 spec:
-  policyName: Process Targeting Cluster Kubelet Endpoint (GitOps)
-  description: "Runtime: alert on access attempts to kubelet endpoints from workloads."
+  policyName: "Process Targeting Cluster Kubelet Endpoint (GitOps)"
+  description: "Runtime: alert on attempted access to kubelet endpoint (port 10250)."
   severity: HIGH_SEVERITY
   categories:
     - Kubernetes
@@ -13,4 +13,9 @@ spec:
   lifecycleStages:
     - RUNTIME
   disabled: false
-  policySections: []
+  policySections:
+    - sectionName: "kubelet-access"
+      policyGroups:
+        - fieldName: "Destination Port"
+          values:
+            - value: "10250"

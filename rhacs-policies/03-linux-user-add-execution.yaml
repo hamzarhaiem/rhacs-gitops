@@ -4,8 +4,8 @@ metadata:
   name: linux-user-add-execution
   namespace: stackrox
 spec:
-  policyName: Linux User Add Execution (GitOps)
-  description: "Runtime: alert when user-management binaries run (useradd/adduser/etc.)."
+  policyName: "Linux User Add Execution (GitOps)"
+  description: "Runtime: alert when user management binaries are executed."
   severity: HIGH_SEVERITY
   categories:
     - Privilege Escalation
@@ -13,4 +13,12 @@ spec:
   lifecycleStages:
     - RUNTIME
   disabled: false
-  policySections: []
+  policySections:
+    - sectionName: "user-management"
+      policyGroups:
+        - fieldName: "Process Name"
+          values:
+            - value: "useradd"
+            - value: "adduser"
+            - value: "usermod"
+            - value: "groupadd"

@@ -4,8 +4,8 @@ metadata:
   name: unauthorized-network-flow
   namespace: stackrox
 spec:
-  policyName: Unauthorized Network Flow (GitOps)
-  description: "Runtime: alert on network flows outside expected/baselined communications."
+  policyName: "Unauthorized Network Flow (GitOps)"
+  description: "Runtime: alert on suspicious/unauthorized network flows (placeholder criteria)."
   severity: HIGH_SEVERITY
   categories:
     - Network Tools
@@ -13,4 +13,9 @@ spec:
   lifecycleStages:
     - RUNTIME
   disabled: false
-  policySections: []
+  policySections:
+    - sectionName: "placeholder"
+      policyGroups:
+        - fieldName: "Destination Port"
+          values:
+            - value: "12345"

@@ -4,8 +4,8 @@ metadata:
   name: remote-file-copy-binary-execution
   namespace: stackrox
 spec:
-  policyName: Remote File Copy Binary Execution (GitOps)
-  description: "Runtime: alert when scp/rsync/sftp/curl/wget are used for remote file copy."
+  policyName: "Remote File Copy Binary Execution (GitOps)"
+  description: "Runtime: alert when remote copy tools run (scp/rsync/curl/wget)."
   severity: HIGH_SEVERITY
   categories:
     - Data Exfiltration
@@ -13,4 +13,13 @@ spec:
   lifecycleStages:
     - RUNTIME
   disabled: false
-  policySections: []
+  policySections:
+    - sectionName: "remote-copy"
+      policyGroups:
+        - fieldName: "Process Name"
+          values:
+            - value: "scp"
+            - value: "rsync"
+            - value: "sftp"
+            - value: "curl"
+            - value: "wget"

@@ -4,12 +4,17 @@ metadata:
   name: unauthorized-process-execution
   namespace: stackrox
 spec:
-  policyName: Unauthorized Process Execution (GitOps)
-  description: "Runtime: alert when an unexpected process executes (baseline-driven)."
+  policyName: "Unauthorized Process Execution (GitOps)"
+  description: "Runtime: alert when unexpected processes execute (baseline/anomaly use-case)."
   severity: HIGH_SEVERITY
   categories:
     - Anomalous Activity
   lifecycleStages:
     - RUNTIME
   disabled: false
-  policySections: []
+  policySections:
+    - sectionName: "placeholder"
+      policyGroups:
+        - fieldName: "Process Name"
+          values:
+            - value: "sh"
