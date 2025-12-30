@@ -4,7 +4,7 @@ metadata:
   name: unauthorized-process-execution
   namespace: stackrox
 spec:
-  policyName: "Unauthorized Process Execution (GitOps)"
+  policyName: "[GitOps] Unauthorized Process Execution"
   description: "Runtime: alert when unexpected processes execute (baseline/anomaly use-case)."
   severity: HIGH_SEVERITY
   categories:
