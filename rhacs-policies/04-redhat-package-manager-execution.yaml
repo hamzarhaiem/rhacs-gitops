@@ -5,13 +5,12 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "Red Hat Package Manager Execution (GitOps)"
-  description: "Runtime: detect package manager usage inside containers."
   severity: MEDIUM_SEVERITY
   disabled: false
 
   lifecycleStages:
     - RUNTIME
-  eventSource: DEPLOYMENT
+  eventSource: DEPLOYMENT_EVENT
 
   categories:
     - System Modification

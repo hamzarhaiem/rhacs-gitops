@@ -5,13 +5,12 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "Remote File Copy Binary Execution (GitOps)"
-  description: "Runtime: detect common file transfer utilities used for remote copy/download."
   severity: HIGH_SEVERITY
   disabled: false
 
   lifecycleStages:
     - RUNTIME
-  eventSource: DEPLOYMENT
+  eventSource: DEPLOYMENT_EVENT
 
   categories:
     - Data Exfiltration

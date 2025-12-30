@@ -5,13 +5,12 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "Linux User Add Execution (GitOps)"
-  description: "Runtime: detect attempts to add users inside containers."
   severity: HIGH_SEVERITY
   disabled: false
 
   lifecycleStages:
     - RUNTIME
-  eventSource: DEPLOYMENT
+  eventSource: DEPLOYMENT_EVENT
 
   categories:
     - System Modification

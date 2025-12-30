@@ -5,13 +5,12 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "Kubernetes Actions: Exec into Pod (GitOps)"
-  description: "Runtime: detect interactive shells often launched during kubectl/oc exec sessions."
   severity: HIGH_SEVERITY
   disabled: false
 
   lifecycleStages:
     - RUNTIME
-  eventSource: DEPLOYMENT
+  eventSource: DEPLOYMENT_EVENT
 
   categories:
     - Kubernetes Events

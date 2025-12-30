@@ -5,13 +5,12 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "[GitOps] Unauthorized Process Execution"
-  description: "Runtime: detect suspicious shells or interpreters executed inside containers."
   severity: HIGH_SEVERITY
   disabled: false
 
   lifecycleStages:
     - RUNTIME
-  eventSource: DEPLOYMENT
+  eventSource: DEPLOYMENT_EVENT
 
   categories:
     - Process Activity
