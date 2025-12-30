@@ -4,18 +4,20 @@ metadata:
   name: process-targeting-kubelet-endpoint
   namespace: stackrox
 spec:
-  policyName: "Process Targeting Cluster Kubelet Endpoint (GitOps)"
-  description: "Runtime: alert on attempted access to kubelet endpoint (port 10250)."
+  policyName: "[GitOps] Process Targeting Cluster Kubelet Endpoint"
+  description: "Runtime: detect suspicious network tooling that may be used to query kubelet endpoints from a container."
   severity: HIGH_SEVERITY
   categories:
-    - Kubernetes
-    - Lateral Movement
+  - Network Activity
   lifecycleStages:
-    - RUNTIME
+  - RUNTIME
   disabled: false
   policySections:
-    - sectionName: "kubelet-access"
-      policyGroups:
-        - fieldName: "Destination Port"
-          values:
-            - value: "10250"
+  - sectionName: "kubelet-suspicious-tooling"
+    policyGroups:
+    - fieldName: "Process Name"
+      values:
+      - value: "curl"
+      - value: "wget"
+      - value: "nc"
+      - value: "ncat"
