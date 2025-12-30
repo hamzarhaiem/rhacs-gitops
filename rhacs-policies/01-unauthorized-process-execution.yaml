@@ -5,16 +5,19 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "[GitOps] Unauthorized Process Execution"
-  description: "Runtime: alert when unexpected processes execute (baseline/anomaly use-case)."
+  description: "Runtime: detect suspicious shells or interpreters executed inside containers."
   severity: HIGH_SEVERITY
-  categories:
-    - Anomalous Activity
+  disabled: false
+
   lifecycleStages:
     - RUNTIME
-  disabled: false
-  policySections:
-    - sectionName: "placeholder"
-      policyGroups:
-        - fieldName: "Process Name"
-          values:
-            - value: "sh"
+  eventSource: DEPLOYMENT
+
+  categories:
+    - Process Activity
+
+  process:
+    - name: "sh"
+    - name: "bash"
+    - name: "zsh"
+    - name: "dash"

@@ -5,20 +5,18 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "Linux User Add Execution (GitOps)"
-  description: "Runtime: alert when user management binaries are executed."
+  description: "Runtime: detect attempts to add users inside containers."
   severity: HIGH_SEVERITY
-  categories:
-    - Privilege Escalation
-    - Anomalous Activity
+  disabled: false
+
   lifecycleStages:
     - RUNTIME
-  disabled: false
-  policySections:
-    - sectionName: "user-management"
-      policyGroups:
-        - fieldName: "Process Name"
-          values:
-            - value: "useradd"
-            - value: "adduser"
-            - value: "usermod"
-            - value: "groupadd"
+  eventSource: DEPLOYMENT
+
+  categories:
+    - System Modification
+
+  process:
+    - name: "useradd"
+    - name: "adduser"
+    - name: "usermod"

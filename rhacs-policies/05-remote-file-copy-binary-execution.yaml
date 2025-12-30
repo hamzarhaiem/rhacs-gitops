@@ -5,21 +5,20 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "Remote File Copy Binary Execution (GitOps)"
-  description: "Runtime: alert when remote copy tools run (scp/rsync/curl/wget)."
+  description: "Runtime: detect common file transfer utilities used for remote copy/download."
   severity: HIGH_SEVERITY
-  categories:
-    - Data Exfiltration
-    - Anomalous Activity
+  disabled: false
+
   lifecycleStages:
     - RUNTIME
-  disabled: false
-  policySections:
-    - sectionName: "remote-copy"
-      policyGroups:
-        - fieldName: "Process Name"
-          values:
-            - value: "scp"
-            - value: "rsync"
-            - value: "sftp"
-            - value: "curl"
-            - value: "wget"
+  eventSource: DEPLOYMENT
+
+  categories:
+    - Data Exfiltration
+
+  process:
+    - name: "scp"
+    - name: "sftp"
+    - name: "rsync"
+    - name: "curl"
+    - name: "wget"

@@ -5,17 +5,17 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "Kubernetes Actions: Exec into Pod (GitOps)"
-  description: "Runtime: alert when a user execs into a pod (placeholder criteria)."
+  description: "Runtime: detect interactive shells often launched during kubectl/oc exec sessions."
   severity: HIGH_SEVERITY
-  categories:
-    - Kubernetes
-    - Anomalous Activity
+  disabled: false
+
   lifecycleStages:
     - RUNTIME
-  disabled: false
-  policySections:
-    - sectionName: "placeholder"
-      policyGroups:
-        - fieldName: "Process Name"
-          values:
-            - value: "bash"
+  eventSource: DEPLOYMENT
+
+  categories:
+    - Kubernetes Events
+
+  process:
+    - name: "sh"
+    - name: "bash"

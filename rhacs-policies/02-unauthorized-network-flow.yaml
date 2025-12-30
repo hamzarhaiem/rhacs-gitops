@@ -5,19 +5,20 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "[GitOps] Unauthorized Network Tool Execution"
+  description: "Runtime: detect execution of common network tooling inside containers."
   severity: HIGH_SEVERITY
   disabled: false
 
   lifecycleStages:
     - RUNTIME
-
   eventSource: DEPLOYMENT
 
   categories:
-    - Network Tools
+    - Network Activity
 
-  criteria:
-    networkFlow:
-      - fieldName: "Destination Port"
-        values:
-          - "22"
+  process:
+    - name: "curl"
+    - name: "wget"
+    - name: "nc"
+    - name: "ncat"
+    - name: "netcat"

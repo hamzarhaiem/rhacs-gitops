@@ -5,19 +5,19 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "[GitOps] Process Potentially Targeting Kubelet"
-  description: "Runtime: detect execution of tools commonly used to query kubelet endpoints."
+  description: "Runtime: detect tooling commonly used to query kubelet endpoints from containers."
   severity: HIGH_SEVERITY
-  categories:
-  - Network Activity
-  lifecycleStages:
-  - RUNTIME
   disabled: false
-  policySections:
-  - sectionName: "kubelet-tooling"
-    policyGroups:
-    - fieldName: "Process Name"
-      values:
-      - value: "curl"
-      - value: "wget"
-      - value: "nc"
-      - value: "ncat"
+
+  lifecycleStages:
+    - RUNTIME
+  eventSource: DEPLOYMENT
+
+  categories:
+    - Network Activity
+
+  process:
+    - name: "curl"
+    - name: "wget"
+    - name: "nc"
+    - name: "ncat"

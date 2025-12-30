@@ -5,19 +5,18 @@ metadata:
   namespace: stackrox
 spec:
   policyName: "Red Hat Package Manager Execution (GitOps)"
-  description: "Runtime: alert when yum/dnf/rpm is executed in a container."
+  description: "Runtime: detect package manager usage inside containers."
   severity: MEDIUM_SEVERITY
-  categories:
-    - Package Management
-    - Anomalous Activity
+  disabled: false
+
   lifecycleStages:
     - RUNTIME
-  disabled: false
-  policySections:
-    - sectionName: "package-management"
-      policyGroups:
-        - fieldName: "Process Name"
-          values:
-            - value: "yum"
-            - value: "dnf"
-            - value: "rpm"
+  eventSource: DEPLOYMENT
+
+  categories:
+    - System Modification
+
+  process:
+    - name: "yum"
+    - name: "dnf"
+    - name: "rpm"
